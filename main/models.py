@@ -29,5 +29,10 @@ class Case(models.Model):
     on_delete=models.PROTECT,
   )
 
-class LegalForm(models.Model):
-  pdf_file = models.FileField(upload_to='legalforms')
+class LegalDoc(models.Model):
+  pdf_file = models.FileField(upload_to='legaldocs')
+  client = models.ForeignKey(
+    'Client',
+    on_delete=models.PROTECT,
+  )
+

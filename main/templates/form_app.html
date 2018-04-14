@@ -34,4 +34,13 @@
   <p>Your browser does not support iframes.</p>
 </iframe>
 
+
+<div id="doc-form" style="margin: 100px;">
+  <form action="/get-advice">
+    {{ legal_form.as_p }}
+    {{ client_form }}
+  </form>
+  <button type="button" class="btn btn-primary">Submit</button>
+</div>
+
 {% endblock %}
