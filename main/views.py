@@ -15,6 +15,8 @@ def upload(request):
     if legal_form.is_valid():
       # save doc
       return redirect('/main/get-advice')
+    else:
+      return redirect('/main/get-advice')
 
   else:
     legal_form = LegalDocForm()
