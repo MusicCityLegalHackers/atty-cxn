@@ -22,12 +22,12 @@ class Client(models.Model):
 class Case(models.Model):
   client = models.ForeignKey(
     'Client',
-    on_delete=models.CASCADE,
+    on_delete=models.PROTECT,
   )
   attorney = models.ForeignKey(
     'Attorney',
-    on_delete=models.CASCADE,
+    on_delete=models.PROTECT,
   )
 
 class LegalForm(models.Model):
-  pass
+  pdf_file = models.FileField(upload_to='legalforms')
