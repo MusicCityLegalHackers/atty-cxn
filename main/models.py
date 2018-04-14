@@ -9,14 +9,14 @@ class User(AbstractUser):
 
 class Attorney(models.Model):
   name = models.CharField(max_length=50)
-  county = models.CharField(max_length=50, required=False)
+  county = models.CharField(max_length=50)
   email = models.CharField(max_length=50)
   specialization = models.CharField(max_length=50)
   bpr = models.IntegerField()
 
 class Client(models.Model):
   name = models.CharField(max_length=50)
-  county = models.CharField(max_length=50, required=False)
+  county = models.CharField(max_length=50)
   email = models.CharField(max_length=50)
 
 class Case(models.Model):

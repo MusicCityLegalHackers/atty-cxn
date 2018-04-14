@@ -2,5 +2,5 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def iframe_test(request):
-  return render(request, 'iframe_test.html')
+def form_app(request):
+  return render(request, 'form_app.html')
