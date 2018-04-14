@@ -6,6 +6,20 @@ from main.utilities import find_attorney
 
 # Create your views here.
 
+def home(request):
+  return render(request, 'home.html')
+
+def upload(request):
+  if request.method == 'POST':
+    legal_form = LegalDocForm(request.POST)
+    if legal_form.is_valid():
+      # save doc
+      return redirect('/main/get-advice')
+
+  else:
+    legal_form = LegalDocForm()
+    return render(request, 'upload.html', {'legal_form': legal_form})
+
 def get_advice(request):
   if request.method == 'POST':
     # print(request.POST)
@@ -28,4 +42,5 @@ def get_advice(request):
   else:
     client_form = ClientForm()
     
-  return render(request, 'form_app.html', {'client_form': client_form})
+  return render(request, 'get_advice.html', {'client_form': client_form})
+

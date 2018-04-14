@@ -28,12 +28,8 @@
   </a>
 </div>
 
-<div id="doc-form" style="margin: 100px;">
-  <form action="/main/get-advice" method="post">
-    {% csrf_token %}
-    {{ client_form.as_p }}
-  <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+<div style="float: right; margin: 50px;">
+  <a href="/main/upload" type="button" class="btn-lg">Next</a>
 </div>
 
 {% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block 'content' %}
+
+<div id="doc-form" style="margin: 100px;">
+  <h1>Request attorney review</h1>
+  <form action="/main/get-advice" method="post">
+    {% csrf_token %}
+    {{ client_form.as_p }}
+  <button type="submit" class="btn btn-primary">Complete</button>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block 'content' %}
+
+<div id="doc-form" style="margin: 100px;">
+  <h1>Upload form</h1>
+  <form action="/main/upload" method="post">
+    {% csrf_token %}
+    {{ legal_form }}
+  <button type="submit" class="btn btn-primary">Upload</button>
+  </form>
+</div>
+
+{% endblock %}
