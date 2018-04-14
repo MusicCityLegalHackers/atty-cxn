@@ -31,7 +31,6 @@
 <div id="doc-form" style="margin: 100px;">
   <form action="/main/get-advice" method="post">
     {% csrf_token %}
-    {{ legal_form.as_p }}
     {{ client_form.as_p }}
   <button type="submit" class="btn btn-primary">Submit</button>
   </form>

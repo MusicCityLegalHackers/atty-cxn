@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from main.forms import LegalDocForm, ClientForm
 from main.models import Attorney, Client, Case
 
@@ -9,7 +9,7 @@ from main.utilities import find_attorney
 def get_advice(request):
   if request.method == 'POST':
     # print(request.POST)
-    legal_form = LegalDocForm(request.POST['pdf_file'])
+    # legal_form = LegalDocForm(request.POST['pdf_file'])
     client_form = ClientForm(
       {
         'name': request.POST['name'],
@@ -18,15 +18,14 @@ def get_advice(request):
       }
     )
 
-    if legal_form.is_valid() and client_form.is_valid():
+    if client_form.is_valid():
       client_data = client_form.cleaned_data
       # Save client info
 
       atty = find_attorney()
-      return redirect(request, 'success.html', {'attorney_name': attorney_info['name'], 'attorney_email': attorney_info['email']})
+      return render(request, 'success.html', {'attorney_name': atty.name, 'attorney_email': atty.email})
 
   else:
-    legal_form = LegalDocForm()
     client_form = ClientForm()
     
-  return render(request, 'form_app.html', {'legal_form': legal_form, 'client_form': client_form})
+  return render(request, 'form_app.html', {'client_form': client_form})
