@@ -36,11 +36,12 @@
 
 
 <div id="doc-form" style="margin: 100px;">
-  <form action="/get-advice">
+  <form action="/main/get-advice" method="post">
+    {% csrf_token %}
     {{ legal_form.as_p }}
-    {{ client_form }}
+    {{ client_form.as_p }}
+  <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-  <button type="button" class="btn btn-primary">Submit</button>
 </div>
 
 {% endblock %}

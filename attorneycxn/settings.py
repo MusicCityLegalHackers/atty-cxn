@@ -25,7 +25,10 @@ SECRET_KEY = 'ooh4pqb70hlo$87w9(0v%frf0mrk4s*2pjmxtl%t71cwi@46@q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '98aac226.ngrok.io'
+]
 
 
 # Application definition
@@ -67,6 +70,8 @@ TEMPLATES = [
         },
     },
 ]
+
+# TEMPLATE_DIRS = ( os.path.join(BASE_DIR, 'templates'), ) 
 
 WSGI_APPLICATION = 'attorneycxn.wsgi.application'
 
