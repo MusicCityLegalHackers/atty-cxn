@@ -3,21 +3,19 @@
 {% load static %}
 
 {% block 'content' %}
+<h1>Atty Cxn</h1>
 
-<h1>AttyCxn</h1>
-
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<d id="carouselExampleIndicators" class="carousel slide w-75 mx-auto border border-dark" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img class="d-block w-100" src="https://ibin.co/3yOBP3ZwmLSG.png" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+      <img class="d-block w-100" src="https://ibin.co/3yOJCzjVFw0o.png" alt="Second slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -28,19 +26,6 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
-
-<iframe src="https://lawhelpinteractive.org/Interview/A2J.aspx?q=JlfqF7zJOf4lC2jqlaCkSy3GeHIBNkrlTwaLJhM7/ZLjA2xnBOxg8FTaYKb2IaNkiDlZkf7Cnngz5E1dSVC/B8LTik8N6P09iSLlZ8cfcosN1BkraQ5J0Pe60NGv1ki8oKvSzPRP4oEQGXltIONbsPsanf8MF77vN1ASG99U4mKUFwA95zccjlr7fmk8Oh2qLbPiXQqmaYyg1p/vs+fIbcgWNrYxqVQ5qaueVtg1R+AmexkUCy2iviMK9iHIobcXOfl2PlZEWjUr5hdEpuS2TM/Ylg5bovtlCuadwaO5KSh+5Ozrtm3QuhfoH/Q2xDLjJwbo0+3cvV9AMp+iUIE9Gg==&lang=en#" width="100%" height="75%">
-  <p>Your browser does not support iframes.</p>
-</iframe>
-
-
-<div id="doc-form" style="margin: 100px;">
-  <form action="/get-advice">
-    {{ legal_form.as_p }}
-    {{ client_form }}
-  </form>
-  <button type="button" class="btn btn-primary">Submit</button>
 </div>
 
 {% endblock %}
