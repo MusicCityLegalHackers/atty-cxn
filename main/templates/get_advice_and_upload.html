@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block 'content' %}
+
+<div id="doc-form" style="margin: 100px;">
+  <h1>Get advice and upload</h1>
+  <form enctype="multipart/form-data" action="/main/get-advice-and-upload" method="post">
+    {% csrf_token %}
+    {{ client_form.as_p }}
+    {{ legal_form.as_p }}
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+{% endblock %}
