@@ -40,6 +40,7 @@ class Case(models.Model):
 
 class LegalDoc(models.Model):
   name = models.CharField(max_length=100)
+  date_submitted = models.DateField(auto_now_add=True)
   pdf_file = models.FileField(upload_to='main/legaldocs')
   client = models.ForeignKey(
     'Client',
