@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'custom-css' %}
+<link href="{% static 'main/jumbotron.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block 'content' %}
+
+  <main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-3">Frequently Asked Questions</h1>
+        <p><em>Coming soon!</em></p>
+      </div>
+    </div>
+
+  </main>
+
+{% endblock %}

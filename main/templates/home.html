@@ -8,41 +8,6 @@
 
 {% block 'content' %}
 
-<body>
-
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">AttyCxn</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">FAQ</a>
-        </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li> -->
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
-
   <main role="main">
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -50,7 +15,7 @@
       <div class="container">
         <h1 class="display-3">Attorney Connection</h1>
         <p>We can help you find an attorney to review your documents, for free or low-cost.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg" href="/upload-form" role="button">Upload a form now &raquo;</a></p>
       </div>
     </div>
 
@@ -59,18 +24,18 @@
       <div class="row">
         <div class="col-md-4">
           <h2>Step 1</h2>
-          <p>Get the forms you need.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">Go &raquo;</a></p>
+          <p>Visit TN Free Legal Answers to find out what documents you might need.</p>
+          <p><a target="_blank" class="btn btn-secondary" href="https://tn.freelegalanswers.org" role="button">Go &raquo;</a></p>
         </div>
         <div class="col-md-4">
           <h2>Step 2</h2>
-          <p></p>
-          <p><a class="btn btn-secondary" href="#" role="button">Go &raquo;</a></p>
+          <p>Get automated, step-by-step assistance filling out your form.</p>
+          <p><a target="_blank" class="btn btn-secondary" href="https://lawhelpinteractive.org/Interview/A2J.aspx?q=JlfqF7zJOf4lC2jqlaCkSy3GeHIBNkrlTwaLJhM7/ZLjA2xnBOxg8FTaYKb2IaNkiDlZkf7Cnngz5E1dSVC/B8LTik8N6P09iSLlZ8cfcosN1BkraQ5J0Pe60NGv1ki8oKvSzPRP4oEQGXltIONbsPsanf8MF77vN1ASG99U4mKUFwA95zccjlr7fmk8Oh2qLbPiXQqmaYyg1p/vs+fIbcgWNrYxqVQ5qaueVtg1R+AmexkUCy2iviMK9iHIobcXOfl2PlZEWjUr5hdEpuS2TM/Ylg5bovtlCuadwaO5KSh+5Ozrtm3QuhfoH/Q2xDLjJwbo0+3cvV9AMp+iUIE9Gg==&lang=en#!" role="button">Go &raquo;</a></p>
         </div>
         <div class="col-md-4">
           <h2>Step 3</h2>
           <p>Upload your forms.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">Go &raquo;</a></p>
+          <p><a class="btn btn-secondary" href="/upload-form" role="button">Go &raquo;</a></p>
         </div>
       </div>
 
@@ -79,9 +44,5 @@
     </div> <!-- /container -->
 
   </main>
-
-  <footer class="container">
-    <p>&copy; Attycxn 2018</p>
-  </footer>
 
 {% endblock %}
