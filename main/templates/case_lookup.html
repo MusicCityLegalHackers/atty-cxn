@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'custom-css' %}
+<link href="{% static 'main/jumbotron.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block 'content' %}
+
+  <main role="main">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div>
+            <h1>Case: {{ case_id }}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+{% endblock %}
