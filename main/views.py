@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from main.forms import UploadLegalDoc, ClientForm
 from main.models import Attorney, Client, Case, LegalDoc
 
-from main.utilities import find_attorney
+from main.utilities import assign_attorney, gen_case_id
 
 # Create your views here.
 
@@ -41,14 +41,33 @@ def upload_form(request):
     # probably want to check each individually since `and` short circuits
     if legal_form.is_valid() and client_form.is_valid():
       client_form_data = client_form.cleaned_data
+      # see whether client is in db already
       new_client = Client.objects.create(
         name=client_form_data['name'],
         county=client_form_data['county'],
+        state=client_form_data['state'],
         email=client_form_data['email']
       )
       new_legal_doc = LegalDoc.objects.create(
         pdf_file=request.FILES['pdf_file'],
         client=new_client
+      )
+      case_category = request.POST['category']
+      #TODO
+      # create Case
+      # assign Attorney to Case
+      case_attorney = assign_attorney(new_client.state, new_client.county, case_category)
+      new_case = Case.objects.create(
+        client=new_client,
+        attorney=case_attorney,
+        case_id=gen_case_id()
+      )
+      # may want to set num_days somewhere else
+      num_days = 2
+      return render(
+        request,
+        'upload_successful.html',
+        {'num_days': num_days, 'case_id': new_case.case_id}
       )
   else:
     client_form = ClientForm()
@@ -57,3 +76,6 @@ def upload_form(request):
 
 def faq(request):
   return render(request, 'faq.html')
+
+def case_lookup(request, case_id):
+  return render(request, 'case.html', {'case_id': case_id})
