@@ -9,30 +9,6 @@ from main.utilities import assign_attorney, gen_case_id
 def home(request):
   return render(request, 'home.html')
 
-def get_advice_and_upload(request):
-  if request.method == 'POST':
-    # print(request.POST)
-    # legal_form = UploadLegalDoc(request.POST['pdf_file'])
-    client_form = ClientForm(
-      {
-        'name': request.POST['name'],
-        'county': request.POST['county'],
-        'email': request.POST['email']
-      }
-    )
-
-    if client_form.is_valid():
-      client_data = client_form.cleaned_data
-      # Save client info
-
-      atty = find_attorney()
-      return render(request, 'success.html', {'attorney_name': atty.name, 'attorney_email': atty.email})
-
-  else:
-    client_form = ClientForm()
-    
-  return render(request, 'get_advice.html', {'client_form': client_form})
-
 def upload_form(request):
   if request.method == 'POST':
     client_form = ClientForm(request.POST)
@@ -47,7 +23,8 @@ def upload_form(request):
         name=client_form_data['name'],
         county=client_form_data['county'],
         state=client_form_data['state'],
-        email=client_form_data['email']
+        email=client_form_data['email'],
+        phone=client_form_data['phone']
       )
       # save LegalDoc to db
       new_legal_doc = LegalDoc.objects.create(

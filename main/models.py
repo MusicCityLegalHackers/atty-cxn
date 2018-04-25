@@ -35,11 +35,13 @@ class Client(models.Model):
 class Case(models.Model):
   client = models.ForeignKey(
     'Client',
-    on_delete=models.PROTECT,
+    on_delete=models.SET_NULL,
+    null=True
   )
   attorney = models.ForeignKey(
     'Attorney',
-    on_delete=models.PROTECT,
+    on_delete=models.SET_NULL,
+    null=True
   )
   # category used to match Case with Attorney specialization
   category = models.CharField(max_length=30)
@@ -58,7 +60,8 @@ class LegalDoc(models.Model):
   pdf_file = models.FileField(upload_to='main/legaldocs')
   client = models.ForeignKey(
     'Client',
-    on_delete=models.PROTECT,
+    on_delete=models.SET_NULL,
+    null=True
   )
 
   def __str__(self):
