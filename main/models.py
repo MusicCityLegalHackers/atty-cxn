@@ -46,7 +46,7 @@ class Case(models.Model):
   # category used to match Case with Attorney specialization
   category = models.CharField(max_length=30)
   opened_on = models.DateField(auto_now_add=True)
-  closed_on = models.DateField()
+  closed_on = models.DateField(blank=True)
   is_open = models.BooleanField(default=True)
   # case_id comes from `gen_case_id` in .utilities
   case_id = models.CharField(max_length=8)
@@ -64,6 +64,9 @@ class LegalDoc(models.Model):
     null=True
   )
 
+  ## Need more descriptive str when Client doesn't exist
   def __str__(self):
-    return "{0} ({1})".format(self.name, str(self.client))
+    if self.name == '':
+      doc_name = 'Untitled'
+    return "{0}: {1}".format(str(self.client), doc_name)
 

@@ -15,6 +15,7 @@ def assign_attorney(state, county, specialization):
   next_atty.is_next = False
   # increment
   next_pk = next_atty.pk + 1
+  new_next = None
   while not new_next:
     try:
       new_next = area_attorneys.get(pk=next_pk)
