@@ -16,7 +16,7 @@
         <div class="col-md-12">
           <div id="doc-form" style="margin: 100px;">
             <h1>Upload your form</h1>
-            <form enctype="multipart/form-data" action="/main/get-advice-and-upload" method="post">
+            <form enctype="multipart/form-data" action="/upload-form" method="post">
               {% csrf_token %}
               <table>
               {{ client_form.as_table }}

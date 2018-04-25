@@ -79,5 +79,19 @@ def upload_form(request):
 def faq(request):
   return render(request, 'faq.html')
 
-def case_lookup(request, case_id):
-  return render(request, 'case.html', {'case_id': case_id})
+def case_lookup(request, case_id=None):
+  if request.method == 'POST':
+    c = Case.objects.get(case_id=case_id)
+    return render(
+      request,
+      'case.html',
+      {
+        'opened_on': c.opened_on,
+        'attorney': c.attorney.name,
+        'case_id': case_id,
+        'open?': c.is_open,
+        'closed_on': c.closed_on
+      }
+    )
+  else:
+    return render(request, 'case_lookup.html')
