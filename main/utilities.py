@@ -13,13 +13,15 @@ def assign_attorney(state, county, specialization):
   area_attorneys = Attorney.objects.filter(state=state, county=county, specialization=specialization)
   next_atty = area_attorneys.get(is_next=True)
   next_atty.is_next = False
+  next_atty.save()
   # increment
   next_pk = next_atty.pk + 1
   new_next = None
   while not new_next:
     try:
       new_next = area_attorneys.get(pk=next_pk)
-      next_next.is_next = True
+      new_next.is_next = True
+      new_next.save()
     except:
       next_pk += 1
   return next_atty
