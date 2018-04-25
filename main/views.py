@@ -58,15 +58,15 @@ def faq(request):
 
 def case_lookup(request, case_id=None):
   if request.method == 'POST':
-    c = Case.objects.get(case_id=case_id)
+    c = Case.objects.get(case_id=request.POST['case-id'])
     return render(
       request,
       'case.html',
       {
         'opened_on': c.opened_on,
         'attorney': c.attorney.name,
-        'case_id': case_id,
-        'open?': c.is_open,
+        'case_id': c.case_id,
+        'is_open': c.is_open,
         'closed_on': c.closed_on
       }
     )

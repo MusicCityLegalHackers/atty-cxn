@@ -1,23 +1,27 @@
 {% extends 'base.html' %}
 
-{% load static %}
-
-{% block 'custom-css' %}
-<link href="{% static 'main/jumbotron.css' %}" rel="stylesheet">
-{% endblock %}
-
 {% block 'content' %}
 
   <main role="main">
 
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-3">Upload successful</h1>
+      </div>
+    </div>
+
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h2>Upload successful</h2>
           <lead>Your case ID is {{ case_id }}. Save this for your records.</lead>
           <p>An attorney will contact you within {{ num_days }} day{{ num_days|pluralize }}.</p>
           <p>If you are not contacted within {{ num_days }} day{{ num_days|pluralize }}, <a href="/case">look up</a> your case for more information.</p>
         </div>
+      </div>
+
+      <hr>
+
+    </div>
 
   </main>
 

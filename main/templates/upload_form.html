@@ -1,21 +1,20 @@
 {% extends 'base.html' %}
 
-{% load static %}
-
-{% block 'custom-css' %}
-<link href="{% static 'main/jumbotron.css' %}" rel="stylesheet">
-{% endblock %}
-
 {% block 'content' %}
 
   <main role="main">
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-3">Upload your legal form</h1>
+      </div>
+    </div>
 
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-12">
-          <div id="doc-form" style="margin: 100px;">
-            <h1>Upload your form</h1>
+          <div id="doc-form">
             <form enctype="multipart/form-data" action="/upload-form" method="post">
               {% csrf_token %}
               <table>
