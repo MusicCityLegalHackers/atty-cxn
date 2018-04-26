@@ -15,7 +15,7 @@
         <div class="col-md-12">
           <div >
             <h1>Enter your case ID</h1>
-            <form action="/case" method="post">
+            <form action="/case-lookup" method="post">
               {% csrf_token %}
               <input type="text" name="case-id" />
               <input type="submit" value="Submit" />

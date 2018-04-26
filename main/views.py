@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from main.forms import UploadLegalDoc, ClientForm
 from main.models import Attorney, Client, Case, LegalDoc
 
@@ -8,6 +9,11 @@ from main.utilities import assign_attorney, gen_case_id
 
 def home(request):
   return render(request, 'home.html')
+
+def faq(request):
+  return render(request, 'faq.html')
+
+
 
 def upload_form(request):
   if request.method == 'POST':
@@ -53,12 +59,16 @@ def upload_form(request):
     legal_form = UploadLegalDoc()
   return render(request, 'upload_form.html', {'client_form': client_form, 'legal_form': legal_form})
 
-def faq(request):
-  return render(request, 'faq.html')
-
-def case_lookup(request, case_id=None):
+def case_lookup(request):
   if request.method == 'POST':
-    c = Case.objects.get(case_id=request.POST['case-id'])
+    url = reverse('case-details', kwargs={'case_id': request.POST['case-id']})
+    return redirect(url)
+  else:
+    return render(request, 'case_lookup.html')
+
+def case_details(request, case_id=None):
+  if request.method == 'GET':
+    c = Case.objects.get(case_id=case_id)
     return render(
       request,
       'case.html',
@@ -71,4 +81,5 @@ def case_lookup(request, case_id=None):
       }
     )
   else:
-    return render(request, 'case_lookup.html')
+    url = reverse('case-lookup')
+    return redirect(url)

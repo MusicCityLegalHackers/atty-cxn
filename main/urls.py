@@ -3,9 +3,9 @@ from django.urls import path, re_path
 from . import views
 
 urlpatterns = [
-    path('', views.home),
-    path('upload-form', views.upload_form),
-    path('faq', views.faq),
-    path('case', views.case_lookup),
-    re_path('case/(?P<case_id>[0-9A-Z]{8})/$', views.case_lookup),
+    path('', views.home, name='home'),
+    path('upload-form', views.upload_form, name='upload-form'),
+    path('faq', views.faq, name='faq'),
+    path('case-lookup', views.case_lookup, name='case-lookup'),
+    path('case/<str:case_id>/', views.case_details, name='case-details'),
 ]
