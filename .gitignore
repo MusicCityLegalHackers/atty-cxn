@@ -105,3 +105,6 @@ venv.bak/
 
 # Private keys
 attorneycxn/keys/
+
+# Legal docs folder (mainly for testing)
+main/legaldocs

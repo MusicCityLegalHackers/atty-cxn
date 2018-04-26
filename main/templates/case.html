@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block 'content' %}
+
+  <main role="main">
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-3">Your case</h1>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="case-info">
+            <h1>Case ID: {{ case_id }}</h1>
+            <p>Opened on {{ opened_on }}</p>
+            <p>Attorney: {{ attorney }}</p>
+            <p>
+              {% if is_open %}
+                Case is still open
+              {% else %}
+                Case was closed on {{ closed_on }}
+              {% endif %}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+    </div>
+
+  </main>
+
+{% endblock %}

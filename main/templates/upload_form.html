@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block 'content' %}
+
+  <main role="main">
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-3">Upload your legal form</h1>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-12">
+          <div id="doc-form">
+            <form enctype="multipart/form-data" action="/upload-form" method="post">
+              {% csrf_token %}
+              <table>
+              {{ client_form.as_table }}
+              {{ legal_form.as_table }}
+              </table>
+              <label for="category">Category (ex: Divorce, Taxes, Eviction)</label>
+              <input type="text" name="category"/>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <div><small>Privacy note: we only share your information with the attorney who reviews your form.</small></div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+    </div> <!-- /container -->
+
+  </main>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+/* Color palette: 
+  http://paletton.com/#uid=53l0u0kdCwB4yS-8WIailrrn3na
+*/
+
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+body {
+  padding-top: 3.5rem;
+}
+
+.case-info {
+  /*margin: 20px;*/
+}
+
+#doc-form {
+  /*margin: 20px;*/
+}
+
+.jumbotron {
+  background-color: #8FBEC5;
+}

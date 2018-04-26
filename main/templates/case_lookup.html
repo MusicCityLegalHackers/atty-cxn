@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block 'content' %}
+
+  <main role="main">
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-3">Find your case</h1>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div >
+            <h1>Enter your case ID</h1>
+            <form action="/case-lookup" method="post">
+              {% csrf_token %}
+              <input type="text" name="case-id" />
+              <input type="submit" value="Submit" />
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+    </div>
+
+  </main>
+
+{% endblock %}
