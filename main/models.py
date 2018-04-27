@@ -18,8 +18,8 @@ class Attorney(models.Model):
   specialization = models.CharField(max_length=50)
   bpr = models.IntegerField() # Bar ID
   is_next = models.BooleanField(default=False)
-
-  # need a field for 'paused' or 'active' for letting Attys pause activity
+  # so Atty can pause activity for a short time (e.g. major case, vacation)
+  is_active = models.BooleanField(default=True)
 
   def __str__(self):
     return self.name + " (Attorney)"

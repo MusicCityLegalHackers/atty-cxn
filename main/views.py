@@ -68,22 +68,3 @@ def case_lookup(request):
     return redirect(url)
   else:
     return render(request, 'case_lookup.html')
-
-@login_required
-def case_details(request, case_id=None):
-  if request.method == 'GET':
-    c = Case.objects.get(case_id=case_id)
-    return render(
-      request,
-      'case.html',
-      {
-        'opened_on': c.opened_on,
-        'attorney': c.attorney.name,
-        'case_id': c.case_id,
-        'is_open': c.is_open,
-        'closed_on': c.closed_on
-      }
-    )
-  else:
-    url = reverse('case-lookup')
-    return redirect(url)
