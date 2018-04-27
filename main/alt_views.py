@@ -1,3 +1,10 @@
+def case_lookup(request):
+  if request.method == 'POST':
+    url = reverse('case-details', kwargs={'case_id': request.POST['case-id']})
+    return redirect(url)
+  else:
+    return render(request, 'case_lookup.html')
+
 @login_required
 def case_details(request, case_id=None):
   '''

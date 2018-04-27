@@ -62,9 +62,3 @@ def upload_form(request):
     legal_form = UploadLegalDoc()
   return render(request, 'upload_form.html', {'client_form': client_form, 'legal_form': legal_form})
 
-def case_lookup(request):
-  if request.method == 'POST':
-    url = reverse('case-details', kwargs={'case_id': request.POST['case-id']})
-    return redirect(url)
-  else:
-    return render(request, 'case_lookup.html')
