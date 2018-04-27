@@ -12,7 +12,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
-    {% block 'custom-css' %}
+    {% block custom-css %}
       <link href="{% static 'main/style.css' %}" rel="stylesheet">
     {% endblock %}
     
@@ -20,7 +20,7 @@
 
 <body>
 
-{% block 'nav' %}
+{% block nav %}
 
 <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #C5E1E5;">
   <a class="navbar-brand" href="/">AttorneyCxn</a>
@@ -60,9 +60,9 @@
 
 {% endblock %}
 
-{% block 'content' %}{% endblock %}
+{% block content %}{% endblock %}
 
-{% block 'footer' %}
+{% block footer %}
 <footer class="container">
   <p>&copy; AttorneyCxn 2018</p>
 </footer>

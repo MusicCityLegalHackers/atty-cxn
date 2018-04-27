@@ -19,6 +19,8 @@ class Attorney(models.Model):
   bpr = models.IntegerField() # Bar ID
   is_next = models.BooleanField(default=False)
 
+  # need a field for 'paused' or 'active' for letting Attys pause activity
+
   def __str__(self):
     return self.name + " (Attorney)"
 

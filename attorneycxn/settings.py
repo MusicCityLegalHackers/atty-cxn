@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    '98aac226.ngrok.io'
+    'testserver',
 ]
 
 
@@ -132,3 +132,4 @@ FILE_UPLOAD_HANDLERS = [
     "django.core.files.uploadhandler.TemporaryFileUploadHandler"
 ]
 
+LOGIN_URL = '/login/'

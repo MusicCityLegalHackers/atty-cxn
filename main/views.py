@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+
+
 from main.forms import UploadLegalDoc, ClientForm
 from main.models import Attorney, Client, Case, LegalDoc
 
@@ -66,6 +69,7 @@ def case_lookup(request):
   else:
     return render(request, 'case_lookup.html')
 
+@login_required
 def case_details(request, case_id=None):
   if request.method == 'GET':
     c = Case.objects.get(case_id=case_id)
