@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 
 # Create your models here.
@@ -65,6 +66,19 @@ class LegalDoc(models.Model):
     on_delete=models.SET_NULL,
     null=True
   )
+  case = models.ForeignKey(
+    'Case',
+    on_delete=models.SET_NULL,
+    null=True
+  )
+
+  ## And this (for URL links?):
+  doc_uuid = models.UUIDField(primary_key=False, default=uuid.uuid4, editable=False)
+
+  ## Need something like this:
+  # def get_absolute_url(self):
+  #   from django.urls import reverse
+  #   return reverse('people.views.details', args=[str(self.id)])
 
   ## Need more descriptive str when Client doesn't exist
   def __str__(self):

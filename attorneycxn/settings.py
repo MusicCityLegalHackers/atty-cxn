@@ -133,3 +133,11 @@ FILE_UPLOAD_HANDLERS = [
 ]
 
 LOGIN_URL = '/login/'
+
+# Email setup
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'attorneycxn@gmail.com'
+with open(BASE_DIR + '/attorneycxn/keys/email_pw.txt') as f:
+    EMAIL_HOST_PASSWORD = f.readline()
+DEFAULT_FROM_EMAIL = 'attorneycxn@gmail.com'
