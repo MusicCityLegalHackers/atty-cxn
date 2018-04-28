@@ -39,15 +39,8 @@ def upload_form(request):
         phone=client_form_data['phone']
       )
 
-      # get next attorney
+      # get attorney to set on Case object
       case_attorney = assign_attorney(new_client.state, new_client.county, request.POST['category'])
-      client_info = {
-        'name': new_client.name,
-        'email': new_client.email,
-        'phone': new_client.phone
-      }
-      # email form and client info to attorney
-      email_to_attorney = email_form_to_attorney(case_attorney.email, client_info, new_legal_doc)
 
       # create Case
       new_case = Case.objects.create(
@@ -64,6 +57,16 @@ def upload_form(request):
         client=new_client,
         case=new_case
       )
+
+      # to include in email to attorney
+      client_info = {
+        'name': new_client.name,
+        'email': new_client.email,
+        'phone': new_client.phone
+      }
+
+      # email form and client info to attorney
+      email_to_attorney = email_form_to_attorney(case_attorney.email, client_info, new_legal_doc)
 
       ## may want to set num_days somewhere else
       num_days = 2

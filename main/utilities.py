@@ -13,8 +13,8 @@ def assign_attorney(state, county, specialization):
     This shouldn't be a problem as long as we always start with the above query and then proceed 
     to find and increment the 'next'.
   '''
-  area_attorneys = Attorney.objects.filter(state=state, county=county, specialization=specialization)
-  next_atty = area_attorneys.get(is_next=True)
+  attorneys_subset = Attorney.objects.filter(state=state, county=county, specialization=specialization)
+  next_atty = attorneys_subset.get(is_next=True)
   next_atty.is_next = False
   next_atty.save()
   # increment
@@ -22,7 +22,7 @@ def assign_attorney(state, county, specialization):
   new_next = None
   while not new_next:
     try:
-      new_next = area_attorneys.get(pk=next_pk)
+      new_next = attorneys_subset.get(pk=next_pk)
       new_next.is_next = True
       new_next.save()
     except:

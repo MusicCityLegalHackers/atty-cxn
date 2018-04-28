@@ -23,7 +23,7 @@ class Attorney(models.Model):
   is_active = models.BooleanField(default=True)
 
   def __str__(self):
-    return self.name + " (Attorney)"
+    return '{0} (Attorney - {1})'.format(self.name, self.specialization)
 
 class Client(models.Model):
   name = models.CharField(max_length=50)
