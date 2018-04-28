@@ -9,7 +9,7 @@ def assign_attorney(state, county, specialization):
     Start with a query for attorneys in Client's state & county and then proceed to get the 
     'next' in that subset.
     This way means that in the entire table there will be several attorneys labeled 'next' - 
-    in particular, there will be exactly as many as there are counties.
+    in particular, there will be (approx.) n=counties*specializations many.
     This shouldn't be a problem as long as we always start with the above query and then proceed 
     to find and increment the 'next'.
   '''
@@ -33,16 +33,18 @@ def get_doc_link(document):
   file_data = FileResponse(open('main/legaldocs/Axiom_UG_EN_anqIZyV.pdf', 'rb'))
   response = HttpResponse(file_data, content_type='application/pdf')
 
-def email_form_to_attorney(atty_email, client_info, doc_uuid):
+def email_form_to_attorney(atty_email, client_info, legal_doc):
   '''
+    atty_email -> str
     client_info -> dict
+    legal_doc -> db object
   '''
   # In production this would be properly formatted for an abosulute URL (e.g. 'https://...')
-  doc_link = 'case/document/{0}'.format(doc_uuid)
+  doc_link = 'case/document/{0}'.format(legal_doc.doc_uuid)
 
   # subject, from_email, to = 'New document to review from AttorneyCxn', 'attorneycxn@gmail.com', atty_email
-  message = 'Someone needs a document reviewed! \n \
-             Here are the details for you: \n \
+  message_body = 'Someone needs a document reviewed! \n \
+             Here are the client\'s details: \n \
              Name: {0} \n \
              Email: {1} \n \
              Phone number: {2} \n \
@@ -53,19 +55,18 @@ def email_form_to_attorney(atty_email, client_info, doc_uuid):
 
   email_msg = EmailMessage(
     'New document to review from AttorneyCxn', # Subject
-    message, # Message body
+    message_body, # Message body
     'attorneycxn@gmail.com', # From
     [atty_email], # To
-    fail_silently=False,
   )
 
-  #TODO Get doc from db
-
-  email_msg.attach('{0} form.pdf'.format(client_info['name']), doc, 'application/pdf')
-  email_msg.send()
+  email_msg.attach_file(legal_doc.pdf_file.name, 'application/pdf')
+  email_msg.send(
+    fail_silently=False
+  )
 
   return 1
-  
+
 def gen_case_id(length=8):
   '''
     Returns uppercase random string of length `length`

@@ -141,3 +141,4 @@ EMAIL_HOST_USER = 'attorneycxn@gmail.com'
 with open(BASE_DIR + '/attorneycxn/keys/email_pw.txt') as f:
     EMAIL_HOST_PASSWORD = f.readline()
 DEFAULT_FROM_EMAIL = 'attorneycxn@gmail.com'
+EMAIL_USE_TLS = True

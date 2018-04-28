@@ -39,22 +39,15 @@ def upload_form(request):
         phone=client_form_data['phone']
       )
 
-      # save LegalDoc to db
-      new_legal_doc = LegalDoc.objects.create(
-        pdf_file=request.FILES['pdf_file'],
-        client=new_client
-      )
-      case_category = request.POST['category']
-
       # get next attorney
-      case_attorney = assign_attorney(new_client.state, new_client.county, case_category)
+      case_attorney = assign_attorney(new_client.state, new_client.county, request.POST['category'])
       client_info = {
         'name': new_client.name,
         'email': new_client.email,
         'phone': new_client.phone
       }
       # email form and client info to attorney
-      email_to_attorney = email_form_to_attorney(case_attorney.email, client_info, new_legal_doc.doc_uuid)
+      email_to_attorney = email_form_to_attorney(case_attorney.email, client_info, new_legal_doc)
 
       # create Case
       new_case = Case.objects.create(
@@ -62,6 +55,14 @@ def upload_form(request):
         attorney=case_attorney,
         ## Should make sure case_id doesn't already exist in db
         case_id=gen_case_id()
+      )
+
+      # save LegalDoc to db
+      new_legal_doc = LegalDoc.objects.create(
+        # name=requst.POST['doc_name'],
+        pdf_file=request.FILES['pdf_file'],
+        client=new_client,
+        case=new_case
       )
 
       ## may want to set num_days somewhere else
@@ -76,15 +77,17 @@ def upload_form(request):
     legal_form = UploadLegalDoc()
   return render(request, 'upload_form.html', {'client_form': client_form, 'legal_form': legal_form})
 
-def doc_link_test(request):
-  # doc_link = 'main/legaldocs/Axiom_UG_EN_anqIZyV.pdf'
-  # return render(request, 'doc_link_test.html', {'doc_link': doc_link})
-  file_data = FileResponse(open('main/legaldocs/Axiom_UG_EN_anqIZyV.pdf', 'rb'))
+# def doc_link_test(request, doc_uuid):
+#   # doc_link = 'main/legaldocs/Axiom_UG_EN_anqIZyV.pdf'
+#   # return render(request, 'doc_link_test.html', {'doc_link': doc_link})
+#   file_data = FileResponse(open('main/legaldocs/Axiom_UG_EN_anqIZyV.pdf', 'rb'))
+#   response = HttpResponse(file_data, content_type='application/pdf')
+#   # response['Content-Disposition'] = 'attachment; filename="Axiom_UG_EN_anqIZyV.pdf"'
+#   return render(request, 'doc_link_test.html', {'doc_link': doc_link})
+
+def view_document(request, doc_uuid):
+  d = LegalDoc.objects.get(doc_uuid=doc_uuid)
+  pdf_file_name = d.pdf_file.name
+  file_data = FileResponse(open(pdf_file_name, 'rb'))
   response = HttpResponse(file_data, content_type='application/pdf')
-  # response['Content-Disposition'] = 'attachment; filename="Axiom_UG_EN_anqIZyV.pdf"'
   return response
-
-def document_link(request, doc_uuid):
-  file_data = FileResponse(open('main/legaldocs/Axiom_UG_EN_anqIZyV.pdf', 'rb'))
-  response = HttpResponse(file_data, content_type='application/pdf')
-

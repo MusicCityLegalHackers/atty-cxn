@@ -72,13 +72,11 @@ class LegalDoc(models.Model):
     null=True
   )
 
-  ## And this (for URL links?):
   doc_uuid = models.UUIDField(primary_key=False, default=uuid.uuid4, editable=False)
 
-  ## Need something like this:
-  # def get_absolute_url(self):
-  #   from django.urls import reverse
-  #   return reverse('people.views.details', args=[str(self.id)])
+  def get_absolute_url(self):
+    from django.urls import reverse
+    return reverse('views.document_link', args=[str(self.doc_uuid)])
 
   ## Need more descriptive str when Client doesn't exist
   def __str__(self):
