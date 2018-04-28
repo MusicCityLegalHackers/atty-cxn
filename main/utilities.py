@@ -29,9 +29,10 @@ def assign_attorney(state, county, specialization):
       next_pk += 1
   return next_atty
 
-def get_doc_link(document):
-  file_data = FileResponse(open('main/legaldocs/Axiom_UG_EN_anqIZyV.pdf', 'rb'))
-  response = HttpResponse(file_data, content_type='application/pdf')
+## Not necessary
+# def get_doc_link(document):
+#   file_data = FileResponse(open('main/legaldocs/Axiom_UG_EN_anqIZyV.pdf', 'rb'))
+#   response = HttpResponse(file_data, content_type='application/pdf')
 
 def email_form_to_attorney(atty_email, client_info, legal_doc):
   '''
