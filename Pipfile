@@ -10,6 +10,7 @@ django = "*"
 whitenoise = "*"
 gunicorn = "*"
 django-heroku = "*"
+"psycopg2-binary" = "*"
 
 [requires]
 python_version = "3.6"
