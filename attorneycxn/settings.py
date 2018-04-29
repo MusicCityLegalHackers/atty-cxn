@@ -26,8 +26,8 @@ with open(BASE_DIR + '/attorneycxn/keys/django_secret.txt') as f:
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'localhost',
-    'testserver',
+    # 'localhost',
+    # 'testserver',
     'attorneycxn.herokuapp.com'
 ]
 
