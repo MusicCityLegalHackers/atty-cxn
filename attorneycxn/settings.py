@@ -28,6 +28,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'localhost',
     'testserver',
+    'attorneycxn.herokuapp.com'
 ]
 
 
