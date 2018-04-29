@@ -19,8 +19,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
-with open(BASE_DIR + '/attorneycxn/keys/django_secret.txt') as f:
-    SECRET_KEY = f.readline()
+## This doesn't work (yet) with Heroku
+# with open(BASE_DIR + '/attorneycxn/keys/django_secret.txt') as f:
+#     SECRET_KEY = f.readline()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -28,6 +29,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'localhost',
     'testserver',
+    'https://attorneycxn.herokuapp.com'
 ]
 
 
@@ -51,7 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'attorneycxn.urls'
@@ -139,13 +141,14 @@ LOGIN_URL = '/login/'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'attorneycxn@gmail.com'
-with open(BASE_DIR + '/attorneycxn/keys/email_pw.txt') as f:
-    EMAIL_HOST_PASSWORD = f.readline()
+## This doesn't work (yet) with Heroku
+# with open(BASE_DIR + '/attorneycxn/keys/email_pw.txt') as f:
+#     EMAIL_HOST_PASSWORD = f.readline()
 DEFAULT_FROM_EMAIL = 'attorneycxn@gmail.com'
 EMAIL_USE_TLS = True
 
 # For use with Heroku
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Files setup for Heroku:
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -159,3 +162,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
+
