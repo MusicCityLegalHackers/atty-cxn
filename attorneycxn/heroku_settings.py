@@ -167,3 +167,6 @@ STATICFILES_DIRS = (
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
+# Connecting to postgres in Heroku
+import dj_database_url
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
