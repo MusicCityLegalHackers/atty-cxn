@@ -30,7 +30,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'localhost',
     'testserver',
-    'https://attorneycxn.herokuapp.com'
+    'attorneycxn.herokuapp.com'
 ]
 
 
