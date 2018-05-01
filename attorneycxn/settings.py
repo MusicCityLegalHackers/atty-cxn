@@ -28,7 +28,8 @@ DEBUG = False
 ALLOWED_HOSTS = [
     # 'localhost',
     # 'testserver',
-    'attorneycxn.herokuapp.com'
+    'attorneycxn.herokuapp.com',
+    'divapp.zackglaserlegal.com'
 ]
 
 
@@ -73,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-# TEMPLATE_DIRS = ( os.path.join(BASE_DIR, 'templates'), ) 
+# TEMPLATE_DIRS = ( os.path.join(BASE_DIR, 'templates'), )
 
 WSGI_APPLICATION = 'attorneycxn.wsgi.application'
 
