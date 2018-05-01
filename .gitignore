@@ -108,3 +108,7 @@ attorneycxn/keys/
 
 # Legal docs folder (mainly for testing)
 main/legaldocs
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
